@@ -24,6 +24,8 @@ COPY --chown=node:node . .
 # Install app dependencies using the `npm ci` command instead of `npm install`
 RUN npm ci
 
+RUN npm run build
+
 # Set NODE_ENV environment variable
 ENV NODE_ENV production
 

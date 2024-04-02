@@ -4,7 +4,7 @@
 # docker build --tag teamtalk/100-test .
 # docker images
 # docker container rm 100-test-server
-# docker run --detach --name 100-test-server -p 80:8080 -e TEST=MyValueHere teamtalk/100-test
+# docker run --detach --name 100-test-server -p 80:8080 -e TEST=MyValueHere -v "$(pwd):/data" teamtalk/100-test
 # docker ps
 # docker exec -it "100-test-server" /bin/sh
 # docker stop 100-test-server

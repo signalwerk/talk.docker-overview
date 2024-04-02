@@ -1,9 +1,14 @@
 # docker-compose -p teamtalk -f docker-compose.yml up
-# docker exec -it "lma-ftp" /bin/sh
+# docker-compose -p teamtalk -f docker-compose.yml -f docker-compose.local.yml up
+# docker-compose -f docker-compose.yml build --no-cache "teamtalk-300-node"
+# docker-compose -f docker-compose.yml build --no-cache "teamtalk-300-nginx"
+# docker exec -it "teamtalk-300-node" /bin/sh
+# docker exec -it "teamtalk-300-nginx" /bin/sh
 
 version: "3"
 services:
   teamtalk-300-node:
+    restart: always
     container_name: teamtalk-300-node
     build: ./Docker/node
     volumes:
@@ -23,6 +28,7 @@ services:
       - 8080:8080
 
   teamtalk-300-nginx:
+    restart: always
     container_name: teamtalk-300-nginx
     build: ./Docker/nginx
     ports:
