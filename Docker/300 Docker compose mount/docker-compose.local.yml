@@ -1,0 +1,14 @@
+# docker-compose -p teamtalk -f docker-compose.yml up
+# docker-compose -f docker-compose.yml build --no-cache "teamtalk-300-node"
+# docker exec -it "teamtalk-300-node" /bin/sh
+# docker exec -it "teamtalk-300-nginx" /bin/sh
+
+version: "3"
+services:
+  teamtalk-300-node:
+    restart: no
+    environment:
+      OTHER: "LOCAL"
+
+  teamtalk-300-nginx:
+    restart: no

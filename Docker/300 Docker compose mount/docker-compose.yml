@@ -1,0 +1,29 @@
+# docker-compose -p teamtalk -f docker-compose.yml up
+# docker exec -it "lma-ftp" /bin/sh
+
+version: "3"
+services:
+  teamtalk-300-node:
+    container_name: teamtalk-300-node
+    build: ./Docker/node
+    volumes:
+      - .:/usr/src/app
+
+    # if you want to use all the environment variables in the .env file
+    # env_file:
+    #   - .env
+
+    environment:
+      TEST: "${TEST}"
+      OTHER: "PROD"
+
+    # Run a command
+    command: npm run start
+    ports:
+      - 8080:8080
+
+  teamtalk-300-nginx:
+    container_name: teamtalk-300-nginx
+    build: ./Docker/nginx
+    ports:
+      - 80:80
